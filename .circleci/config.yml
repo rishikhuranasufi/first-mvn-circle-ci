@@ -36,9 +36,9 @@ jobs:
       - run:
           name: Deploy
           command: |
-            curl -H "Circle-Token: $CIRCLE_CI_TOKEN" https://circleci.com/api/v1.1/project/github/rishikhuranasufi/$CIRCLE_PROJECT_REPONAME/latest/artifacts \
+            curl -H "Circle-Token: " https://circleci.com/api/v1.1/project/github/rishikhuranasufi/$CIRCLE_PROJECT_REPONAME/latest/artifacts \
                | grep -o 'https://[^"]*' \
-               | wget --verbose --header "Circle-Token: $CIRCLE_CI_TOKEN" --input-file -
+               | wget --verbose --header "Circle-Token: " --input-file -
             java -jar circleci-0.0.1.jar 11 11
 
 workflows:
