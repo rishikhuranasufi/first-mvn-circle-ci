@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:     
+  first-mvn-job-to-execute-tests:
+    docker:
+      - image: circleci/openjdk:8u171-jdk
+    steps:
+      - checkout
+      - run:
+         command: |
+            echo technotrainer tests to be executed.            
+
+workflows:
+  first-workflow-maven:
+    jobs:
+      - first-mvn-job-to-execute-tests      
+  
