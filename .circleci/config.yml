@@ -10,8 +10,8 @@ jobs:
          command: |
             echo technotrainer tests to be executed.
             mvn clean test
-        - store_test_results:
-            path: /home/circleci/project/target/
+      - store_test_results:
+          path: /home/circleci/project/target/
 
 workflows:
   first-workflow-maven:
