@@ -8,7 +8,8 @@ jobs:
       - checkout
       - run:
          command: |
-            echo technotrainer tests to be executed.            
+            echo technotrainer tests to be executed.
+            mvn clean install
 
 workflows:
   first-workflow-maven:
