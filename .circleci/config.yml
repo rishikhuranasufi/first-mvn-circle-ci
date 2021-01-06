@@ -15,9 +15,25 @@ jobs:
       - store_artifacts:
           path: /home/circleci/project/target/site/jacoco
           destination: testcaseDetails
+          
+  first-mvn-job-to-create-package:
+    docker:
+      - image: circleci/openjdk:8u171-jdk
+    steps:
+      - checkout
+      - run:
+         command: |
+            echo Job to create package
+            mvn clean package
+      - store_artifacts:
+          path: /home/circleci/project/target/circleci-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+          destination: circleci-0.0.1.jar
 
 workflows:
   first-workflow-maven:
     jobs:
-      - first-mvn-job-to-execute-tests      
+      - first-mvn-job-to-execute-tests  
+      - first-mvn-job-to-create-package:
+          requires:
+            - first-mvn-job-to-execute-tests      
   
