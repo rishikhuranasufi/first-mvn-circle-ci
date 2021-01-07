@@ -64,4 +64,4 @@ workflows:
             - first-mvn-job-to-create-package
   workflow-to-demonstrate-environment:    
     jobs:
-      - job-to-demonstrate-environment:
+      - job-to-demonstrate-environment
