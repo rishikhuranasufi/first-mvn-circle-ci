@@ -1,6 +1,17 @@
 version: 2.1
 
-jobs:     
+jobs:
+  job-to-demonstrate-environment:
+    docker:
+      - image: circleci/openjdk:8u171-jdk
+    steps:
+      - checkout
+      - run:
+         command: |            
+            # 1 Type of ENV : Environment variable for a single command shell             
+            echo "Value for variable ENV_INSIDE_STEP is :: "$ENV_INSIDE_STEP
+         environment:
+           ENV_INSIDE_STEP: I am defined as env variable in run. 
   first-mvn-job-to-execute-tests:
     docker:
       - image: circleci/openjdk:8u171-jdk
@@ -51,4 +62,6 @@ workflows:
       - deploy-stage:
           requires:
             - first-mvn-job-to-create-package
-  
+  workflow-to-demonstrate-environment:    
+    jobs:
+      - job-to-demonstrate-environment:
